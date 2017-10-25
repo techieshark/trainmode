@@ -1,0 +1,86 @@
+/* Train mode CSS */
+
+body.tm-enabled .tm-replaced-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background: blue;
+  background: #205a84;
+  max-width: 100%;
+}
+
+body.tm-enabled .tm-replaced-image p {
+  color: white;
+  font-size: 30px; /* todo make font size dynamic */
+  align-self: center;
+  margin: 0;
+  padding: 0 5px;
+}
+
+/* make all images visible, even when missing. */
+body.tm-enabled .tm-image-wrapper img {
+  min-width: 15px;
+  min-height: 15px;
+
+  /* opacity < 1, to create same stacking context as if positioned absolutely,
+     this is so any .tm-alt is positioned under this image. */
+  opacity: 0.99;
+
+  /* background: #d7a77577;  #FF8000; tangerine */
+
+  /* border: 1px dotted black; */
+}
+
+body.tm-enabled .tm-image-wrapper {
+  display: inline-block;
+}
+
+/*body.tm-enabled .tm-image-wrapper[data-descr] {
+  position: relative;
+  text-decoration: underline;
+  color: #00f;
+  cursor: help;
+}
+*/
+/*body.tm-enabled .tm-image-wrapper[data-descr]:hover::after {
+  content: attr(data-descr);
+  position: absolute;
+  left: 0;
+  top: 40px;
+  min-width: 200px;
+  border: 1px #aaa solid;
+  border-radius: 10px;
+  background-color: #ffc;
+  padding: 12px;
+  color: #000;
+  font-size: 14px;
+  z-index: 2;
+}*/
+
+.tm-image-wrapper {
+  outline: 1px dotted gray;
+}
+
+div.tm-alt {
+  z-index: 0; /* place behind (transparent) placeholder image (img needs opacity<1 too) */
+  background: pink;
+  position: absolute;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+div.tm-alt p {
+  text-align: center;
+  font-size: smaller;
+  margin-bottom: 0;
+}
+
+/* div#img-solar {
+    max-width: 553px;
+    height: 311px;
+}
+*/

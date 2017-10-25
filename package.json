@@ -1,0 +1,30 @@
+{
+  "name": "trainmode",
+  "version": "0.1.0",
+  "description": "Train Mode browser extension to save bandwidth on a hotspot",
+  "main": "eslint eventPage.js",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint *.js",
+    "lint-fix": "eslint --fix *.js",
+    "lint-fix-file": "eslint --fix",
+    "stylelint": "node node_modules/stylelint/bin/stylelint.js *.css"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "stylelint-config-standard": "^16.0.0"
+  }
+}

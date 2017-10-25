@@ -1,0 +1,58 @@
+{
+  // Required
+  "manifest_version": 2,
+  "name": "Train Mode",
+  "version": "0.1",
+
+  // Recommended
+  "description": "This extension saves bandwidth by blocking most images. Use it on the train. Use it while hotspotting. Use it anywhere.",
+  // "default_locale": "en", -- do i18n later: https://developer.chrome.com/extensions/i18n
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+
+
+  // Optional
+  "author": "Peter W (@techieshark)",
+
+  "browser_action": {
+    "default_icon": "images/icon16.png",
+    "default_popup": "popup.html",
+    "default_title": "Train Mode (active)"
+  },
+
+  "background": {
+    "scripts": ["messages.js", "whitelist.js", "lib.js", "facebook.js", "background.js"]
+    // "persistent": false -- see below.
+    // when persistent:true, we get: "The 'webRequest' API cannot be used with event pages"
+    // So we need to stick with persistent (default) background pages.
+    // via http://stackoverflow.com/a/17979097/1024811
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["messages.js", "contentscript.js"],
+      "css": ["contentscript.css"],
+      "run_at": "document_start", // " after DOM complete, but before images load"
+      "all_frames": true
+    }
+  ],
+
+  "web_accessible_resources": [
+    "assets/*.png"
+  ],
+
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    // "contentSettings", // https://developer.chrome.com/extensions/contentSettings
+    "storage", // https://developer.chrome.com/extensions/storage
+    "tabs", // https://developer.chrome.com/extensions/tabs
+    "webRequest", // https://developer.chrome.com/extensions/webRequest
+    "webRequestBlocking",
+    "http://*/*",
+    "https://*/*"
+  ]
+}
